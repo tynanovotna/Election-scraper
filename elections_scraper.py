@@ -10,13 +10,16 @@ import bs4
 import html5lib
 import lxml
 import requests
+from requests.adapters import HTTPAdapter, Retry
 
 import sys
 
 def download_web_page(url):
     try:
-        print(repr(url))
-        raw_web_page = requests.get(url)
+        session = requests.Session()
+        retries = Retry(total=30, backoff_factor=2, status_forcelist=[104, 502, 503, 504])
+        session.mount("http://", HTTPAdapter(max_retries=retries))
+        raw_web_page = session.get(url).text
         print(f"Downloading data from selected URL: {url}")
         return raw_web_page
     except requests.exceptions.MissingSchema:
