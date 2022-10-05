@@ -30,19 +30,32 @@ def download_web_page(url):
         print(f"Invalid URL {url}.")
         exit()
 
-def get_urls(soup):
+def get_area_urls(soup, area_urls):
     elements = soup.find_all(class_="cislo")
-    urls = []
     for element in elements:
         element_attrs = element.find("a").attrs
-        urls.append(URL_BEGINNIG + element_attrs["href"].replace("amp;", ""))
-    return urls
+        area_urls.append(URL_BEGINNIG + element_attrs["href"].replace("amp;", ""))
 
-def process_areas(urls):   
-    for url in urls:
+def get_region_urls(soup):
+    elements = soup.find_all(class_="center")   
+    region_urls = []
+    area_urls = []
+    for element in elements:
+        element_attrs = element.find("a").attrs
+        url = element_attrs["href"].replace("amp;", "")
+        if url.find("xvyber=") == - 1:
+            region_urls.append(URL_BEGINNIG + url)
+        else:
+            area_urls.append(URL_BEGINNIG + url)
+    return region_urls, area_urls
+
+def process_areas(region_urls, area_urls):   
+    for url in region_urls:
         response = download_web_page(url)
         soup = BeautifulSoup(response.content, "lxml")
-        urls = get_urls(soup)
+        get_area_urls(soup, area_urls)
+    for area_url in area_urls:
+        print(area_url)
 
 def validate_output_file_name(output_file_name):
     if not output_file_name.endswith(".csv"):
@@ -53,8 +66,8 @@ def election_scraper(url, output_file_name):
     validate_output_file_name(output_file_name)
     response = download_web_page(url)
     soup = BeautifulSoup(response.content, "lxml")
-    urls = get_urls(soup)
-    process_areas(urls)
+    region_urls, area_urls = get_region_urls(soup)
+    process_areas(region_urls, area_urls)
     
 if __name__ == "__main__": 
     if not len(sys.argv) == 3:
