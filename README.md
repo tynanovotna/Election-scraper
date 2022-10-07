@@ -2,20 +2,20 @@
 # H1  Project info:
 This project is done for scraping parliamentary election results from the year 2017, their location is at https://volby.cz/pls/ps2017nss/ps3?xjazyk=CZ.
 
-# H1 How to install libraries:
+# How to install libraries:
 All requirements for installing libraries are in a file requirements.txt. I also recommend using the pipenv virtual environment, which enables the Pipfile.lock and Pipfile. If you wish to use the pipenv virtual environment and it's not installed yet run the following command: 
     ```
     pip install pipenv
     ```
-how to install with pipenv:
+###### how to install with pipenv:
     ```
     pipenv install
     ```
-    how to install with pip: 
+###### how to install with pip: 
     ```
     pip install -r requirements.txt
     ```
-# H1 How to run this project:
+# How to run this project:
 ### This program needs 3 arguments from the terminal:
 ```
 python elections_scraper.py <url_of_district_area> <output_file_name.csv> 
@@ -23,13 +23,14 @@ python elections_scraper.py <url_of_district_area> <output_file_name.csv>
 
 All data are transformed to file with the suffix ```.csv```
 
-# H1 Example of the running program:
+# Example of the running program:
 ### How to get election results of district e.g., Plzeň-město:
 1. argument = ```https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=4&xnumnuts=3203 # url of the selected district area```
 2. argument = ```results_Plzen_mesto.csv # output file name```
+
 Those arguments must be strings("" or '').
 
-#### example:
+##### example:
 ```
 python elections_scraper.py "https://volby.cz/pls/ps2017nss/ps32?xjazyk=CZ&xkraj=4&xnumnuts=3203" "results_Plzen_mesto.csv"
 ```
