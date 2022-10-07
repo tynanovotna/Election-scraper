@@ -23,7 +23,7 @@ def download_web_page(url, first_url=False):
         session.mount("http://", HTTPAdapter(max_retries=retries))
         response = session.get(url)
         if first_url:
-            print(f"Downloading data from selected URL: {url}")
+            print(f"Downloading data from the selected URL: {url}")
         return response
     except requests.exceptions.MissingSchema:
         print(f"Invalid URL {url}.")
@@ -50,7 +50,9 @@ def process_region_data(region_url):
     region_data["code"] = re.search("xobec=(.*?)&x", region_url).group(1)
     data = soup.find(id="publikace")
     h3 = data.find_all("h3")
-    region_data["location"] = h3[2].text.split("Obec: ")[1].strip()
+    for h in h3:
+        if not h.text.find("Obec: ") == - 1:
+            region_data["location"] = h.text.split("Obec: ")[1].strip()
     tables = soup.find_all("table")
     table_data = tables[0].find_all("td")
     region_data["registered"] = table_data[3].text.replace("\xa0", " ")
