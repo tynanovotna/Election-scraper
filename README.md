@@ -1,5 +1,5 @@
 # Election-scraper
-# H1  Project info:
+# Project info:
 This project is done for scraping parliamentary election results from the year 2017, their location is at https://volby.cz/pls/ps2017nss/ps3?xjazyk=CZ.
 
 # How to install libraries:
@@ -8,18 +8,14 @@ All requirements for installing libraries are in a file requirements.txt. I also
     pip install pipenv
     ```
 ###### how to install with pipenv:
-    ```
-    pipenv install
-    ```
+    ```pipenv install```
+    
 ###### how to install with pip: 
-    ```
-    pip install -r requirements.txt
-    ```
+    ```pip install -r requirements.txt```
+
 # How to run this project:
 ### This program needs 3 arguments from the terminal:
-```
-python elections_scraper.py <url_of_district_area> <output_file_name.csv> 
-```
+```python elections_scraper.py <url_of_district_area> <output_file_name.csv> ```
 
 All data are transformed to file with the suffix ```.csv```
 
