@@ -1,17 +1,17 @@
 # Election-scraper
 # Project info:
-This project is done for scraping parliamentary election results from the year 2017, their location is at https://volby.cz/pls/ps2017nss/ps3?xjazyk=CZ.
+This project is done for scraping parliamentary election results from the year 2017, their location: https://volby.cz/pls/ps2017nss/ps3?xjazyk=CZ.
 
 # How to install libraries:
-All requirements for installing libraries are in a file requirements.txt. I also recommend using the pipenv virtual environment, which enables the Pipfile.lock and Pipfile. If you wish to use the pipenv virtual environment and it's not installed yet run the following command: 
+All requirements for installing libraries are in a file ```requirements.txt```. I also recommend using the pipenv virtual environment, which enables the Pipfile.lock and Pipfile. If you wish to use the pipenv virtual environment and it's not installed yet run the following command: 
     ```
     pip install pipenv
     ```
 ###### how to install with pipenv:
-    ```pipenv install```
+```pipenv install```
     
 ###### how to install with pip: 
-    ```pip install -r requirements.txt```
+```pip install -r requirements.txt```
 
 # How to run this project:
 ### This program needs 3 arguments from the terminal:
